@@ -1,0 +1,47 @@
+
+- connection: local
+  hosts: localhost
+  vars:
+    powerline_root: "/usr/local/lib/python2.7/dist-packages/powerline"
+  tasks:
+    - name: install packages
+      become: yes
+      apt:
+        name: "{{ item }}"
+        state: present
+      with_items:
+        - emacs
+        - neovim
+        - git
+        - fish
+        - tmux
+        - python-pip
+        - fonts-powerline
+        - silversearcher-ag
+        - curl
+    - name: install python packages
+      become: yes
+      pip:
+        name: "{{ item }}"
+        state: present
+      with_items:
+        - powerline-status # note to self: change this to an apt package once Ubuntu has 2.6 in repos
+    - name: checkout spacemacs
+      git:
+        repo: https://github.com/syl20bnr/spacemacs
+        dest: ~/.emacs.d
+    - file:
+        path: ~/.config/fish
+        state: directory
+    - name: fish config
+      template:
+        src: config.fish.j2
+        dest: ~/.config/fish/config.fish
+    - file:
+        path: ~/.local/bin
+        state: directory
+    - name: tmux config
+      template:
+        src: tmux.conf.j2
+        dest: ~/.tmux.conf
+

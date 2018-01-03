@@ -1,0 +1,35 @@
+
+unbind C-b
+set-option -g prefix C-g
+bind-key C-g last-window
+
+bind s copy-mode
+
+set -g base-index 1
+set-window-option -g pane-base-index 1
+
+set -s escape-time 0
+
+setw -g aggressive-resize on
+setw -g mode-keys vi
+
+bind P paste-buffer
+bind-key -T copy-mode-vi v send-keys -X begin-selection
+bind-key -T copy-mode-vi y send-keys -X copy-selection
+bind-key -T copy-mode-vi r send-keys -X rectangle-toggle
+
+unbind %
+bind | split-window -h
+bind - split-window -v
+
+bind h select-pane -L
+bind j select-pane -D
+bind k select-pane -U
+bind l select-pane -R
+
+set -g default-terminal "screen-256color"
+set -g mouse off
+
+run-shell "powerline-daemon -q"
+source "{{ powerline_root }}/bindings/tmux/powerline.conf"
+
