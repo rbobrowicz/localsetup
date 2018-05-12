@@ -1,8 +1,6 @@
 
 - connection: local
   hosts: localhost
-  vars:
-    powerline_root: "/usr/local/lib/python2.7/dist-packages/powerline"
   tasks:
     - name: install packages
       become: yes
@@ -15,17 +13,10 @@
         - git
         - fish
         - tmux
-        - python-pip
+        - powerline
         - fonts-powerline
         - silversearcher-ag
         - curl
-    - name: install python packages
-      become: yes
-      pip:
-        name: "{{ item }}"
-        state: present
-      with_items:
-        - powerline-status # note to self: change this to an apt package once Ubuntu has 2.6 in repos
     - name: checkout spacemacs
       git:
         repo: https://github.com/syl20bnr/spacemacs
