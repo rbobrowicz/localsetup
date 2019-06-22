@@ -8,6 +8,7 @@
         name: "{{ item }}"
         state: present
       with_items:
+        - gnome-tweaks
         - emacs
         - neovim
         - git
@@ -17,6 +18,8 @@
         - fonts-powerline
         - silversearcher-ag
         - curl
+        - clojure
+        - leiningen
     - name: checkout spacemacs
       git:
         repo: https://github.com/syl20bnr/spacemacs
