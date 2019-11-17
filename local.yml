@@ -10,6 +10,7 @@
         - tilix
         - powerline
         - the_silver_searcher
+        - ripgrep
         - curl
         - glances
         - docker
@@ -17,6 +18,11 @@
         - chromium
         - "@multimedia"
   tasks:
+    - name: set hostname
+      become: yes
+      hostname:
+        name: europa
+        use: systemd
     - name: install packages
       become: yes
       dnf:
@@ -26,17 +32,21 @@
       git:
         repo: https://github.com/syl20bnr/spacemacs
         dest: ~/.emacs.d
+        version: develop
+        update: no
     - name: spacemacs config
       template:
         src: spacemacs.j2
         dest: ~/.spacemacs
-    - file:
+    - name: fish config dir
+      file:
         path: ~/.config/fish
         state: directory
     - name: fish config
       template:
         src: config.fish.j2
         dest: ~/.config/fish/config.fish
-    - file:
+    - name: create local bin directory
+      file:
         path: ~/.local/bin
         state: directory
