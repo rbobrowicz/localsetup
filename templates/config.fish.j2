@@ -1,18 +1,10 @@
-if test -n "$EMACS"
-  set -x TERM eterm-color
-end
-
 function fish_title
   true
-end
-
-function fish_user_key_bindings
-  bind \ch backward-kill-path-component
 end
 
 set fish_greeting ""
 
 set -x PATH /home/radek/.local/bin $PATH
 
-set fish_function_path $fish_function_path "/usr/share/powerline/bindings/fish"
+set fish_function_path $fish_function_path "/usr/share/powerline/fish"
 powerline-setup

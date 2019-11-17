@@ -1,29 +1,35 @@
-
 - connection: local
   hosts: localhost
-  tasks:
-    - name: install packages
-      become: yes
-      apt:
-        name: "{{ item }}"
-        state: present
-      with_items:
+  vars:
+    packages_to_install:
         - gnome-tweaks
         - emacs
         - neovim
         - git
         - fish
-        - tmux
+        - tilix
         - powerline
-        - fonts-powerline
-        - silversearcher-ag
+        - the_silver_searcher
         - curl
-        - clojure
-        - leiningen
+        - glances
+        - docker
+        - python3-docker
+        - chromium
+        - "@multimedia"
+  tasks:
+    - name: install packages
+      become: yes
+      dnf:
+        name: "{{ packages_to_install }}"
+        state: present
     - name: checkout spacemacs
       git:
         repo: https://github.com/syl20bnr/spacemacs
         dest: ~/.emacs.d
+    - name: spacemacs config
+      template:
+        src: spacemacs.j2
+        dest: ~/.spacemacs
     - file:
         path: ~/.config/fish
         state: directory
@@ -34,8 +40,3 @@
     - file:
         path: ~/.local/bin
         state: directory
-    - name: tmux config
-      template:
-        src: tmux.conf.j2
-        dest: ~/.tmux.conf
-
