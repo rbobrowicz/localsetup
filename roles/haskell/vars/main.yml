@@ -1,0 +1,13 @@
+
+packages_to_install:
+  - perl
+  - make
+  - automake
+  - gcc
+  - gmp-devel
+  - libffi
+  - zlib-devel
+  - xz
+  - tar
+  - git
+  - gnupg

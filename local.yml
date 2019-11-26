@@ -18,3 +18,7 @@
         name: clojure
       tags:
         - clojure
+    - import_role:
+        name: haskell
+      tags:
+        - haskell
