@@ -16,7 +16,6 @@
         - docker
         - python3-docker
         - chromium
-        - "@multimedia"
   tasks:
     - name: set hostname
       become: yes
@@ -50,3 +49,8 @@
       file:
         path: ~/.local/bin
         state: directory
+    - name: download lein
+      get_url:
+        url: https://raw.githubusercontent.com/technomancy/leiningen/stable/bin/lein
+        dest: ~/.local/bin/lein
+        mode: "a+x"
