@@ -1,0 +1,12 @@
+
+- name: set hostname
+  become: yes
+  hostname:
+    name: europa
+    use: systemd
+
+- name: install packages
+  become: yes
+  dnf:
+    name: "{{ packages_to_install }}"
+    state: present

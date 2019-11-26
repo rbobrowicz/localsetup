@@ -1,0 +1,11 @@
+
+packages_to_install:
+    - gnome-tweaks
+    - neovim
+    - git
+    - tilix
+    - curl
+    - glances
+    - docker
+    - python3-docker
+    - chromium

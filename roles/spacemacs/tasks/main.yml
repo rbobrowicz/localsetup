@@ -1,0 +1,18 @@
+
+- name: install packages
+  become: yes
+  dnf:
+    name: "{{ packages_to_install }}"
+    state: present
+
+- name: checkout spacemacs
+  git:
+    repo: https://github.com/syl20bnr/spacemacs
+    dest: ~/.emacs.d
+    version: develop
+    update: no
+
+- name: spacemacs config
+  template:
+    src: spacemacs.j2
+    dest: ~/.spacemacs

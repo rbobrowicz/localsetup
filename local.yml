@@ -1,56 +1,20 @@
+
 - connection: local
   hosts: localhost
-  vars:
-    packages_to_install:
-        - gnome-tweaks
-        - emacs
-        - neovim
-        - git
-        - fish
-        - tilix
-        - powerline
-        - the_silver_searcher
-        - ripgrep
-        - curl
-        - glances
-        - docker
-        - python3-docker
-        - chromium
   tasks:
-    - name: set hostname
-      become: yes
-      hostname:
-        name: europa
-        use: systemd
-    - name: install packages
-      become: yes
-      dnf:
-        name: "{{ packages_to_install }}"
-        state: present
-    - name: checkout spacemacs
-      git:
-        repo: https://github.com/syl20bnr/spacemacs
-        dest: ~/.emacs.d
-        version: develop
-        update: no
-    - name: spacemacs config
-      template:
-        src: spacemacs.j2
-        dest: ~/.spacemacs
-    - name: fish config dir
-      file:
-        path: ~/.config/fish
-        state: directory
-    - name: fish config
-      template:
-        src: config.fish.j2
-        dest: ~/.config/fish/config.fish
-    - name: create local bin directory
-      file:
-        path: ~/.local/bin
-        state: directory
-    - name: download lein
-      get_url:
-        url: https://raw.githubusercontent.com/technomancy/leiningen/stable/bin/lein
-        dest: ~/.local/bin/lein
-        mode: "a+x"
+    - import_role:
+        name: basic
+      tags:
+        - basic
+    - import_role:
+        name: fish
+      tags:
+        - fish
+    - import_role:
+        name: spacemacs
+      tags:
+        - spacemacs
+    - import_role:
+        name: clojure
+      tags:
+        - clojure

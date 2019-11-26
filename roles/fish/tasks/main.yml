@@ -1,0 +1,16 @@
+
+- name: install packages
+  become: yes
+  dnf:
+    name: "{{ packages_to_install }}"
+    state: present
+
+- name: fish config dir
+  file:
+    path: ~/.config/fish
+    state: directory
+
+- name: fish config
+  template:
+    src: config.fish.j2
+    dest: ~/.config/fish/config.fish
