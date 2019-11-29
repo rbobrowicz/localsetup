@@ -2,9 +2,13 @@ function fish_title
   true
 end
 
-set fish_greeting ""
-
-set -x PATH /home/radek/.local/bin $PATH
+if status --is-login
+  set fish_greeting ""
+  set -gx EDITOR "emacsclient -t"
+  set -gx VISUAL "emacsclient -c -a emacs"
+  set -gx ALTERNATE_EDITOR ""
+  set -x PATH /home/radek/.local/bin $PATH
+end
 
 set fish_function_path $fish_function_path "/usr/share/powerline/fish"
 powerline-setup

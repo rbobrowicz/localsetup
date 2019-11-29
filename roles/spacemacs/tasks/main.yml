@@ -16,3 +16,22 @@
   template:
     src: spacemacs.j2
     dest: ~/.spacemacs
+
+- name: create systemd user unit directory
+  file:
+    name: ~/.config/systemd/user
+    state: directory
+
+- name: emacs daemon systemd unit
+  template:
+    src: emacs.service.j2
+    dest: ~/.config/systemd/user/emacs.service
+  register: unit_out
+
+- name: start and enable emacs daemon
+  systemd:
+    name: emacs
+    state: started
+    enabled: yes
+    scope: user
+    daemon_reload: "{{ unit_out.changed }}"
