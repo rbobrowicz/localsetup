@@ -1,20 +1,16 @@
 # -*- mode: fish -*-
 
-function fish_title
-    true
-end
-
-set fish_greeting ""
-
 if status --is-login
     set -x PATH /home/radek/.local/bin $PATH
 end
 
 if status --is-interactive
+    set -gx TERM xterm-256color
     set -gx EDITOR emacsclient -t
     set -gx VISUAL emacsclient -c -a emacs
     set -gx ALTERNATE_EDITOR ""
+
+    set fish_function_path $fish_function_path "/usr/share/powerline/fish"
+    powerline-setup
 end
 
-set fish_function_path $fish_function_path "/usr/share/powerline/fish"
-powerline-setup
