@@ -1,0 +1,13 @@
+
+- name: install qutebrowser
+  apt:
+    name:
+      - qutebrowser
+      - libjs-pdf
+    state: present
+    cache_valid_time: 3600
+
+- name: update qutebrowser config
+  template:
+    src: autoconfig.yml
+    dest: ~/.config/qutebrowser/autoconfig.yml

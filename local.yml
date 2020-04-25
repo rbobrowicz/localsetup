@@ -26,3 +26,7 @@
         name: alacritty
       tags:
         - alacritty
+    - import_role:
+        name: qutebrowser
+      tags:
+        - qutebrowser
