@@ -1,7 +1,7 @@
 
 - name: install packages
   become: yes
-  dnf:
+  apt:
     name: "{{ packages_to_install }}"
     state: present
 

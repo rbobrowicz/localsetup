@@ -1,0 +1,27 @@
+
+- name: install packages
+  become: yes
+  apt:
+    name: "{{ packages_to_install }}"
+    state: present
+
+- name: checkout doom emacs
+  git:
+    repo: git@github.com:hlissner/doom-emacs
+    dest: ~/.emacs.d
+    version: develop
+    update: no
+
+- name: create doom directory
+  file:
+    path: ~/.doom.d
+    state: directory
+
+- name: update doom emacs configs
+  template:
+    src: "{{ item }}"
+    dest: "~/.doom.d/{{ item }}"
+  loop:
+    - config.el
+    - init.el
+    - packages.el

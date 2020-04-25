@@ -2,5 +2,5 @@
 packages_to_install:
     - emacs
     - git
-    - the_silver_searcher
+    - silversearcher-ag
     - ripgrep

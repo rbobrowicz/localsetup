@@ -7,18 +7,18 @@
       tags:
         - basic
     - import_role:
+        name: git
+      tags:
+        - git
+    - import_role:
         name: fish
       tags:
         - fish
     - import_role:
-        name: spacemacs
+        name: doom
       tags:
-        - spacemacs
+        - doom
     - import_role:
         name: clojure
       tags:
         - clojure
-    - import_role:
-        name: haskell
-      tags:
-        - haskell

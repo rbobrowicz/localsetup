@@ -7,10 +7,11 @@ end
 if status --is-interactive
     set -gx TERM xterm-256color
     set -gx EDITOR emacsclient -t
-    set -gx VISUAL emacsclient -c -a emacs
+    set -gx VISUAL emacsclient -c
     set -gx ALTERNATE_EDITOR ""
+    set -gx SSH_AUTH_SOCK /run/user/(id -u)/gnupg/S.gpg-agent.ssh
 
-    set fish_function_path $fish_function_path "/usr/share/powerline/fish"
+    set fish_function_path $fish_function_path "/usr/share/powerline/bindings/fish"
     powerline-setup
 end
 
