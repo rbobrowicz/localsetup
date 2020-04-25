@@ -22,3 +22,7 @@
         name: clojure
       tags:
         - clojure
+    - import_role:
+        name: alacritty
+      tags:
+        - alacritty
