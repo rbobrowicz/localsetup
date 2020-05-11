@@ -4,3 +4,4 @@ packages_to_install:
     - curl
     - pass
     - pass-extension-otp
+    - suckless-tools

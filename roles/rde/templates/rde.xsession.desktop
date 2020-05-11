@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=RDE
+Comment=Radek's Desktop Environment
+Exec=/usr/bin/gnome-session --builtin --session=rde --disable-acceleration-check
+TryExec=spectrwm
+Type=Application
+DesktopNames=GNOME-Flashback;GNOME

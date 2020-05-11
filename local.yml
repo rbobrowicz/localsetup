@@ -30,3 +30,7 @@
         name: qutebrowser
       tags:
         - qutebrowser
+    - import_role:
+        name: rde
+      tags:
+        - rde
