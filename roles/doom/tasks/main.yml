@@ -26,6 +26,11 @@
     - init.el
     - packages.el
 
+- name: create systemd user directory
+  file:
+    path: ~/.config/systemd/user
+    state: directory
+
 - name: create emacs systemd service
   template:
     src: emacs.service.j2
