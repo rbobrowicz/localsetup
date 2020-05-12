@@ -10,3 +10,14 @@
   apt:
     name: "{{ packages_to_install }}"
     state: present
+
+- name: create local bin directory
+  file:
+    path: ~/.local/bin
+    state: directory
+
+- name: install passmenu
+  template:
+    src: passmenu
+    dest: ~/.local/bin/passmenu
+    mode: '0755'

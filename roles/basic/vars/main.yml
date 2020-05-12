@@ -5,4 +5,5 @@ packages_to_install:
     - pass
     - pass-extension-otp
     - suckless-tools
+    - xdotool
     - gnome-tweaks
