@@ -23,7 +23,24 @@
 (define-key *root-map* (kbd "d") "exec dmenu_run")
 (define-key *root-map* (kbd "C-d") "exec dmenu_run")
 
-(define-key *root-map* (kbd "C-o") "other")
+(define-key *root-map* (kbd "C-o") "fnext")
+
+;;version of stumpwm in ubuntu has these flipped
+(define-key *exchange-window-map* (kbd "l") "exchange-direction right")
+(define-key *exchange-window-map* (kbd "h") "exchange-direction left")
+
+(defvar *application-map*
+  (let ((m (make-sparse-keymap)))
+    (define-key m (kbd "c") "exec alacritty")
+    (define-key m (kbd "d") "exec dmenu_run")
+    (define-key m (kbd "e") "exec emacsclient -c")
+    (define-key m (kbd "p") "exec passmenu")
+    (define-key m (kbd "P") "exec passmenu --type")
+    (define-key m (kbd "q") "exec qutebrowser")
+    m))
+
+(define-key *root-map* (kbd "a") '*application-map*)
+(define-key *root-map* (kbd "C-a") '*application-map*)
 
 ;;make input boxes appear at top and center
 (setf *input-window-gravity* :top)
