@@ -1,7 +1,7 @@
 # -*- mode: fish -*-
 
 if status --is-login
-    set -x PATH /home/radek/.local/bin $PATH
+    set -x PATH ~/.local/bin $PATH
 end
 
 if status --is-interactive
@@ -11,8 +11,4 @@ if status --is-interactive
     set -gx VISUAL emacsclient -c
     set -gx ALTERNATE_EDITOR ""
     set -gx SSH_AUTH_SOCK /run/user/(id -u)/gnupg/S.gpg-agent.ssh
-
-    #set fish_function_path $fish_function_path "/usr/share/powerline/bindings/fish"
-    #powerline-setup
 end
-
