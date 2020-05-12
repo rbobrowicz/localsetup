@@ -1,11 +1,17 @@
 
 - name: install qutebrowser
+  become: yes
   apt:
     name:
       - qutebrowser
       - libjs-pdf
     state: present
     cache_valid_time: 3600
+
+- name: create qutebrowser config dir
+  file:
+    path: ~/.config/qutebrowser
+    state: directory
 
 - name: update qutebrowser config
   template:

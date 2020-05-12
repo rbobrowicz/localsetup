@@ -1,0 +1,12 @@
+
+- name: set gpg agent settings
+  template:
+    src: gpg-agent.conf.j2
+    dest: ~/.gnupg/gpg-agent.conf
+    mode: '0600'
+
+- name: set sshcontrol
+  template:
+    src: sshcontrol.j2
+    dest: ~/.gnupg/sshcontrol
+    mode: '0640'

@@ -7,7 +7,7 @@
 
 - name: checkout doom emacs
   git:
-    repo: git@github.com:hlissner/doom-emacs
+    repo: https://github.com/hlissner/doom-emacs
     dest: ~/.emacs.d
     version: develop
     update: no
@@ -25,3 +25,15 @@
     - config.el
     - init.el
     - packages.el
+
+- name: create emacs systemd service
+  template:
+    src: emacs.service.j2
+    dest: "~/.config/systemd/user/emacs.service"
+
+- name: enable emacs service
+  systemd:
+    scope: user
+    name: emacs
+    enabled: true
+

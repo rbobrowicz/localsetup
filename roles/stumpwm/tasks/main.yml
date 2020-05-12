@@ -1,0 +1,59 @@
+
+- name: install packages
+  become: yes
+  apt:
+    name: "{{ packages_to_install }}"
+    state: present
+    cache_valid_time: 3600
+
+- name: write xsession
+  become: yes
+  template:
+    src: stumpwm-gnome-xsession.desktop
+    dest: /usr/share/xsessions/stumpwm-gnome.desktop
+    mode: '0644'
+
+- name: write gnome session
+  become: yes
+  template:
+    src: stumpwm-gnome.session
+    dest: /usr/share/gnome-session/sessions/stumpwm-gnome.session
+    mode: '0644'
+
+- name: write desktop file
+  become: yes
+  template:
+    src: stumpwm-gnome.desktop
+    dest: /usr/share/applications/stumpwm-gnome.desktop
+    mode: '0644'
+
+- name: write start script
+  become: yes
+  template:
+    src: stumpwm-gnome
+    dest: /usr/bin/stumpwm-gnome
+    mode: '0755'
+
+- name: write systemd unit
+  become: yes
+  template:
+    src: stumpwm-gnome.target
+    dest: /lib/systemd/user/gnome-session-x11@stumpwm-gnome.target
+    mode: '0644'
+
+- name: checkout contrib modules
+  git:
+    repo: https://github.com/stumpwm/stumpwm-contrib
+    dest: ~/.stumpwm.d/modules
+    version: master
+    update: no
+
+- name: create stumpwm config directory
+  file:
+    path: ~/.config/stumpwm
+    state: directory
+
+- name: write stumpwm config
+  template:
+    src: config.j2
+    dest: ~/.config/stumpwm/config

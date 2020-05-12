@@ -2,7 +2,7 @@
 - name: install packages
   become: yes
   apt:
-    name: "{{ packages_to_install }}"
+    name: fish
     state: present
 
 - name: fish config dir

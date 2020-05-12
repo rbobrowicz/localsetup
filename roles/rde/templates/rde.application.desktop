@@ -1,9 +1,0 @@
-[Desktop Entry]
-Type=Application
-Name=rde
-Comment=Improved dynamic tiling window manager
-Exec=rde
-X-GNOME-WMName=rde
-X-GNOME-Autostart-Phase=WindowManager
-X-GNOME-Provides=windowmanager
-X-GNOME-Autostart-Notify=false

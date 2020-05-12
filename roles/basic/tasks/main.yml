@@ -1,10 +1,9 @@
 
-# wait till 2.9
-#- name: set hostname
-#  become: yes
-#  hostname:
-#    name: europa
-#    use: systemd
+- name: set hostname
+  become: yes
+  hostname:
+    name: europa
+    use: systemd
 
 - name: install packages
   become: yes

@@ -15,6 +15,10 @@
       tags:
         - fish
     - import_role:
+        name: gpg
+      tags:
+        - gpg
+    - import_role:
         name: doom
       tags:
         - doom
@@ -31,6 +35,6 @@
       tags:
         - qutebrowser
     - import_role:
-        name: rde
+        name: stumpwm
       tags:
-        - rde
+        - stumpwm
