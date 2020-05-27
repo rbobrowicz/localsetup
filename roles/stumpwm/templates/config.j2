@@ -29,6 +29,7 @@
 (define-key *exchange-window-map* (kbd "l") "exchange-direction right")
 (define-key *exchange-window-map* (kbd "h") "exchange-direction left")
 
+;;application shortcuts
 (defvar *application-map*
   (let ((m (make-sparse-keymap)))
     (define-key m (kbd "c") "exec alacritty")
@@ -37,10 +38,16 @@
     (define-key m (kbd "p") "exec passmenu")
     (define-key m (kbd "P") "exec passmenu --type")
     (define-key m (kbd "q") "exec qutebrowser")
+    (define-key m (kbd "f") "exec firefox")
+    (define-key m (kbd "s") "exec slack")
     m))
 
 (define-key *root-map* (kbd "a") '*application-map*)
 (define-key *root-map* (kbd "C-a") '*application-map*)
+
+;;window switch
+(dotimes (n 10)
+  (define-key *top-map* (kbd (format nil "s-~d" n)) (format nil "select-window-by-number ~d" n)))
 
 ;;make input boxes appear at top and center
 (setf *input-window-gravity* :top)
